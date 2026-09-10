@@ -1,0 +1,1491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VORTEX INFRASTRUCTURE | Engineering the Scale of Tomorrow</title>
+  <meta name="description" content="Civil Engineering & Infrastructure Firm. Mega-scale bridges, highways, subterranean tunnels, and marine structures engineered for movement, resilience, and generations.">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/jpeg" href="image/artem_apukhtin-tower-2818918_1920.jpg">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Swiper CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+  <!-- Core & HUD Stylesheets -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/blueprint-hud.css">
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  
+  <!-- Three.js CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <!-- Swiper JS -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <!-- GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+</head>
+<body>
+
+  <!-- Floating Cursor Reticle -->
+  <div id="cursorReticle" class="cursor-reticle"></div>
+
+  <!-- SITE HEADER (UNIVERSAL CLEAN NAVBAR: LOGO LEFT, HAMBURGER RIGHT) -->
+  <header class="site-header" id="siteHeader">
+    <div class="container nav-container">
+      <a href="#hero" class="brand-logo" id="brandHomeLink" aria-label="Vortex Infrastructure Home">
+        <div class="logo-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 22h16M2 22l10-18 10 18M10 14h4M8 18h8"/>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <span class="brand-name">VORTEX INFRA</span>
+          <span class="brand-sub">CIVIL & STRUCTURAL ENGINEERING</span>
+        </div>
+      </a>
+
+      <!-- Universal Hamburger Menu Drawer -->
+      <nav id="mainNav" class="nav-drawer" aria-label="Main Navigation">
+        <div class="drawer-inner">
+          <div class="drawer-header">
+            <span class="drawer-tag mono"><i data-lucide="compass" style="width: 14px; height: 14px;"></i> NAVIGATION MATRIX</span>
+            <div class="drawer-lang-pills">
+              <button class="lang-pill active">EN</button>
+              <button class="lang-pill">DE</button>
+              <button class="lang-pill">FR</button>
+              <button class="lang-pill">AR</button>
+            </div>
+          </div>
+
+          <ul class="nav-menu" id="navMenu">
+            <li><a href="#hero" class="nav-link active"><span class="nav-num">01</span><span>Home</span></a></li>
+            <li><a href="#network-map" class="nav-link"><span class="nav-num">02</span><span>Infrastructure Map</span></a></li>
+            <li><a href="#structural-lab" class="nav-link"><span class="nav-num">03</span><span>3D Structural Lab</span></a></li>
+            <li><a href="#aerial-vault" class="nav-link"><span class="nav-num">04</span><span>Aerial Video Vault</span></a></li>
+            <li><a href="#expertise" class="nav-link"><span class="nav-num">05</span><span>Disciplines & Sectors</span></a></li>
+            <li><a href="#services" class="nav-link"><span class="nav-num">06</span><span>BIM 6D & Services</span></a></li>
+            <li><a href="#case-studies" class="nav-link"><span class="nav-num">07</span><span>Signature Projects</span></a></li>
+            <li><a href="#about" class="nav-link"><span class="nav-num">08</span><span>Standards & Overview</span></a></li>
+            <li><a href="#tender-portal" class="nav-link"><span class="nav-num">09</span><span>Tender & RFP Portal</span></a></li>
+          </ul>
+
+          <div class="drawer-footer">
+            <div class="drawer-status mono">
+              <span class="status-dot"></span>
+              <span>SYSTEM STATUS: <strong>NOMINAL [LIVE TELEMETRY ACTIVE]</strong></span>
+            </div>
+            <a href="#tender-portal" class="btn btn-primary drawer-cta" id="drawerRfpBtn">
+              <span>Request Technical RFP</span>
+              <i data-lucide="arrow-up-right"></i>
+            </a>
+            <div class="drawer-meta mono">
+              <span>HQ: Chennai, India</span>
+              <span>•</span>
+              <span>+91 (044) 4982-1100</span>
+              <span>•</span>
+              <span>ISO 9001:2015 & 14001:2015</span>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      <!-- Right Navbar Action: Strictly Hamburger Menu Button -->
+      <div class="nav-actions">
+        <button class="hamburger-btn" id="mobileToggle" aria-label="Toggle Navigation Menu" aria-expanded="false">
+          <span class="hamburger-label mono">MENU</span>
+          <span class="hamburger-icon-box">
+            <i data-lucide="menu" id="hamburgerIcon"></i>
+          </span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT CONTAINER -->
+  <main>
+    <!-- HERO SECTION (STORYMAP CINEMATIC VIDEO & EDITORIAL ARCHITECTURE) -->
+    <section id="hero" class="hero-section">
+      <!-- Full-Width Background Video -->
+      <div class="hero-media-wrapper">
+        <video id="heroVideoPlayer" class="hero-video-bg" autoplay muted loop playsinline webkit-playsinline preload="auto">
+          <source src="videos/122281-725513151_medium.mp4" type="video/mp4">
+          <source src="videos/215239_medium.mp4" type="video/mp4">
+          <source src="videos/42923-434300950_medium.mp4" type="video/mp4">
+        </video>
+        
+        <!-- Storymap Floating Pause/Play Control (Bottom Right of Video) -->
+        <button id="heroFloatingPlayBtn" class="floating-video-btn" aria-label="Toggle Hero Video Playback" title="Play / Pause Video">
+          <i data-lucide="pause" style="width: 16px; height: 16px;"></i>
+        </button>
+
+        <div class="hero-video-gradient-bottom"></div>
+        <div class="hero-hud-grid"></div>
+      </div>
+
+      <!-- HUD Corner Elements -->
+      <div class="hud-corner hud-corner-tl"></div>
+      <div class="hud-corner hud-corner-tr"></div>
+      <div class="hud-corner hud-corner-bl"></div>
+      <div class="hud-corner hud-corner-br"></div>
+
+      <div class="container hero-content">
+        <div class="hero-eyebrow">
+          <span class="cad-tag">CIVIL INFRASTRUCTURE CORP</span>
+          <span class="coord-badge">LAT 13.08° N / LONG 80.27° E</span>
+        </div>
+
+        <h1 class="hero-title">
+          Engineering the <br>
+          <span class="highlight">Scale of Tomorrow.</span>
+        </h1>
+
+        <p class="hero-subtitle">
+          Infrastructure engineered for movement, resilience, and generations. Delivering ultra-span bridges, heavy transit viaducts, seismic tunnel bores, and coastal defense systems.
+        </p>
+
+        <div class="hero-cta-group">
+          <a href="#network-map" class="btn btn-primary pill-btn">
+            <span>Explore Infrastructure Network</span>
+            <i data-lucide="map-pin"></i>
+          </a>
+          <a href="#structural-lab" class="btn btn-secondary pill-btn">
+            <span>Launch 3D Structural Lab</span>
+            <i data-lucide="box"></i>
+          </a>
+        </div>
+
+        <!-- HUD Video Camera Selector Controls (ALL 7 CHANNELS) -->
+        <div class="hero-cam-controls">
+          <span class="cam-indicator"><span class="status-dot"></span> LIVE FEED:</span>
+          <button class="cam-btn active" data-src="videos/122281-725513151_medium.mp4">CAM 01</button>
+          <button class="cam-btn" data-src="videos/215239_medium.mp4">CAM 02</button>
+          <button class="cam-btn" data-src="videos/42923-434300950_medium.mp4">CAM 03</button>
+          <button class="cam-btn" data-src="videos/215250_medium.mp4">CAM 04</button>
+          <button class="cam-btn" data-src="videos/137374-766338347_medium.mp4">CAM 05</button>
+          <button class="cam-btn" data-src="videos/14117669-uhd_3840_2160_30fps.mp4">CAM 06</button>
+          <button class="cam-btn" data-src="videos/13161273_3840_2160_60fps.mp4">CAM 07</button>
+        </div>
+
+        <div class="hero-telemetry-cards">
+          <div class="telemetry-card">
+            <div class="t-label">Active Viaduct Spans</div>
+            <div class="t-value">142 KM</div>
+            <div class="t-sub">Continuous Precast Deck</div>
+          </div>
+          <div class="telemetry-card">
+            <div class="t-label">Maximum Pier Load</div>
+            <div class="t-value">45.0 kN</div>
+            <div class="t-sub">Marine Piling Foundation</div>
+          </div>
+          <div class="telemetry-card">
+            <div class="t-label">Design Life Standard</div>
+            <div class="t-value">120 YRS</div>
+            <div class="t-sub">Anti-Carbonation M70 Mix</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- LIVE TELEMETRY STATISTICS STRIP -->
+    <section class="stats-strip-section">
+      <div class="container">
+        <div class="stats-grid">
+          <div class="stat-item">
+            <div class="stat-number-wrap">
+              <span class="stat-number" data-count="142">0</span>
+              <span class="stat-unit">KM</span>
+            </div>
+            <span class="stat-title">ROADS & VIADUCTS</span>
+            <span class="stat-desc">Multi-lane expressways and elevated transit alignments</span>
+          </div>
+
+          <div class="stat-item">
+            <div class="stat-number-wrap">
+              <span class="stat-number" data-count="38">0</span>
+              <span class="stat-unit">+</span>
+            </div>
+            <span class="stat-title">BRIDGES & FLYOVERS</span>
+            <span class="stat-desc">Cable-stayed, orthotropic, and arch girder bridges</span>
+          </div>
+
+          <div class="stat-item">
+            <div class="stat-number-wrap">
+              <span class="stat-number" data-count="24">0</span>
+              <span class="stat-unit">ACTIVE</span>
+            </div>
+            <span class="stat-title">MEGA PROJECTS</span>
+            <span class="stat-desc">Delivering on-time under ISO 9001:2015 standards</span>
+          </div>
+
+          <div class="stat-item">
+            <div class="stat-number-wrap">
+              <span class="stat-number" data-count="19">0</span>
+              <span class="stat-unit">HUBS</span>
+            </div>
+            <span class="stat-title">METROPOLITAN CITIES</span>
+            <span class="stat-desc">Integrated engineering offices & regional field labs</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SIGNATURE INTERACTIVE INFRASTRUCTURE NETWORK MAP -->
+    <section id="network-map" class="map-section">
+      <div class="container">
+        <div class="map-header-row">
+          <div>
+            <div class="section-label">
+              <span class="cad-tag">SIGNATURE INTERACTIVE NETWORK</span>
+              <div class="line"></div>
+            </div>
+            <h2 class="section-title">National Infrastructure Grid</h2>
+            <p class="section-desc">
+              Explore our live footprint. Select any metropolitan node on the interactive CAD network to inspect structural telemetry, concrete specifications, and engineering case studies.
+            </p>
+          </div>
+
+          <!-- Sector Filters -->
+          <div class="map-filter-nav">
+            <button class="map-filter-btn active" data-filter="all">All Sectors</button>
+            <button class="map-filter-btn" data-filter="bridges">Bridges</button>
+            <button class="map-filter-btn" data-filter="highways">Highways</button>
+            <button class="map-filter-btn" data-filter="rail">Rail & Metro</button>
+            <button class="map-filter-btn" data-filter="water">Water & Marine</button>
+          </div>
+        </div>
+
+        <div class="map-layout-grid">
+          <!-- Interactive SVG CAD Map Container -->
+          <div class="interactive-map-frame">
+            <div class="map-telemetry-overlay">
+              <div class="telemetry-ping">
+                <span class="status-dot"></span>
+                <span>GIS GRID: ACTIVE [WGS 84]</span>
+              </div>
+              <div>DATUM: MSL +0.00m | SCALE 1:5000</div>
+            </div>
+
+            <div class="map-cad-controls">
+              <button class="cad-ctrl-btn" title="Recenter Grid"><i data-lucide="crosshair"></i></button>
+              <button class="cad-ctrl-btn" title="Toggle Layer"><i data-lucide="layers"></i></button>
+            </div>
+
+            <!-- SVG CAD Vector Map -->
+            <div class="svg-map-wrapper">
+              <svg viewBox="0 0 600 650" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <!-- Background Blueprint Grid -->
+                <defs>
+                  <pattern id="mapCadGrid" width="30" height="30" patternUnits="userSpaceOnUse">
+                    <path d="M 30 0 L 0 0 0 30" fill="none" stroke="#223242" stroke-width="0.75" />
+                  </pattern>
+                  <radialGradient id="nodeGlow" cx="50%" cy="50%" r="50%">
+                    <stop offset="0%" stop-color="#d7a63d" stop-opacity="0.8"/>
+                    <stop offset="100%" stop-color="#d7a63d" stop-opacity="0"/>
+                  </radialGradient>
+                </defs>
+                <rect width="600" height="650" fill="url(#mapCadGrid)" />
+
+                <!-- Geographic Sub-outline Vector Contour -->
+                <path d="M180,60 L380,80 L460,190 L510,310 L440,430 L360,560 L290,610 L240,530 L160,420 L130,280 L180,60 Z" 
+                      fill="rgba(21, 30, 39, 0.4)" stroke="#37444f" stroke-width="1.2" stroke-dasharray="3 3"/>
+
+                <!-- Network Corridor Connector Lines (Animated Trusses) -->
+                <!-- Delhi to Ahmedabad -->
+                <line x1="280" y1="130" x2="190" y2="280" class="svg-truss-line" data-connects="delhi ahmedabad" />
+                <!-- Delhi to Kolkata -->
+                <line x1="280" y1="130" x2="470" y2="270" class="svg-truss-line" data-connects="delhi kolkata" />
+                <!-- Ahmedabad to Mumbai -->
+                <line x1="190" y1="280" x2="180" y2="390" class="svg-truss-line" data-connects="ahmedabad mumbai" />
+                <!-- Mumbai to Hyderabad -->
+                <line x1="180" y1="390" x2="310" y2="400" class="svg-truss-line" data-connects="mumbai hyderabad" />
+                <!-- Mumbai to Bengaluru -->
+                <line x1="180" y1="390" x2="270" y2="490" class="svg-truss-line" data-connects="mumbai bengaluru" />
+                <!-- Hyderabad to Bengaluru -->
+                <line x1="310" y1="400" x2="270" y2="490" class="svg-truss-line" data-connects="hyderabad bengaluru" />
+                <!-- Bengaluru to Chennai (HQ Corridor) -->
+                <line x1="270" y1="490" x2="370" y2="490" class="svg-truss-line active" data-connects="bengaluru chennai" />
+                <!-- Hyderabad to Chennai -->
+                <line x1="310" y1="400" x2="370" y2="490" class="svg-truss-line active" data-connects="hyderabad chennai" />
+                <!-- Kolkata to Chennai -->
+                <line x1="470" y1="270" x2="370" y2="490" class="svg-truss-line" data-connects="kolkata chennai" />
+                <!-- Bengaluru to Kochi -->
+                <line x1="270" y1="490" x2="240" y2="570" class="svg-truss-line" data-connects="bengaluru kochi" />
+
+                <!-- Nodes -->
+                <!-- 1. Delhi -->
+                <g class="map-node" data-city="delhi" transform="translate(280, 130)">
+                  <circle class="pulse" cx="0" cy="0" r="16" fill="url(#nodeGlow)" stroke="#d7a63d"/>
+                  <circle class="core" cx="0" cy="0" r="6" fill="#111820" stroke="#d7a63d" stroke-width="2"/>
+                  <text x="14" y="4">● DELHI NCR</text>
+                </g>
+
+                <!-- 2. Kolkata -->
+                <g class="map-node" data-city="kolkata" transform="translate(470, 270)">
+                  <circle class="pulse" cx="0" cy="0" r="16" fill="url(#nodeGlow)" stroke="#d7a63d"/>
+                  <circle class="core" cx="0" cy="0" r="6" fill="#111820" stroke="#d7a63d" stroke-width="2"/>
+                  <text x="14" y="4">● KOLKATA</text>
+                </g>
+
+                <!-- 3. Ahmedabad -->
+                <g class="map-node" data-city="ahmedabad" transform="translate(190, 280)">
+                  <circle class="pulse" cx="0" cy="0" r="16" fill="url(#nodeGlow)" stroke="#d7a63d"/>
+                  <circle class="core" cx="0" cy="0" r="6" fill="#111820" stroke="#d7a63d" stroke-width="2"/>
+                  <text x="-95" y="4">AHMEDABAD ●</text>
+                </g>
+
+                <!-- 4. Mumbai -->
+                <g class="map-node" data-city="mumbai" transform="translate(180, 390)">
+                  <circle class="pulse" cx="0" cy="0" r="18" fill="url(#nodeGlow)" stroke="#d7a63d"/>
+                  <circle class="core" cx="0" cy="0" r="7" fill="#111820" stroke="#d7a63d" stroke-width="2.5"/>
+                  <text x="-75" y="4">MUMBAI ●</text>
+                </g>
+
+                <!-- 5. Hyderabad -->
+                <g class="map-node" data-city="hyderabad" transform="translate(310, 400)">
+                  <circle class="pulse" cx="0" cy="0" r="18" fill="url(#nodeGlow)" stroke="#d7a63d"/>
+                  <circle class="core" cx="0" cy="0" r="7" fill="#111820" stroke="#d7a63d" stroke-width="2.5"/>
+                  <text x="14" y="4">● HYDERABAD</text>
+                </g>
+
+                <!-- 6. Bengaluru -->
+                <g class="map-node" data-city="bengaluru" transform="translate(270, 490)">
+                  <circle class="pulse" cx="0" cy="0" r="18" fill="url(#nodeGlow)" stroke="#d7a63d"/>
+                  <circle class="core" cx="0" cy="0" r="7" fill="#111820" stroke="#d7a63d" stroke-width="2.5"/>
+                  <text x="-95" y="4">BENGALURU ●</text>
+                </g>
+
+                <!-- 7. Chennai (HQ - Primary Node) -->
+                <g class="map-node active" data-city="chennai" transform="translate(370, 490)">
+                  <circle class="pulse" cx="0" cy="0" r="22" fill="url(#nodeGlow)" stroke="#d7a63d"/>
+                  <circle class="core" cx="0" cy="0" r="8" fill="#d7a63d" stroke="#ffffff" stroke-width="3"/>
+                  <text x="16" y="5" font-weight="700">● CHENNAI (HQ)</text>
+                </g>
+
+                <!-- 8. Kochi -->
+                <g class="map-node" data-city="kochi" transform="translate(240, 570)">
+                  <circle class="pulse" cx="0" cy="0" r="16" fill="url(#nodeGlow)" stroke="#d7a63d"/>
+                  <circle class="core" cx="0" cy="0" r="6" fill="#111820" stroke="#d7a63d" stroke-width="2"/>
+                  <text x="-65" y="4">KOCHI ●</text>
+                </g>
+              </svg>
+            </div>
+          </div>
+
+          <!-- HUD Project Inspector Card -->
+          <div class="map-inspector-card">
+            <div class="inspector-header">
+              <span class="inspector-badge" id="inspTag">PROJ-CHE-08 / CHENNAI</span>
+              <span class="mono amber-text" style="font-size: 0.75rem;">TELEMETRY LINKED</span>
+            </div>
+
+            <div class="inspector-body">
+              <div class="inspector-media">
+                <img id="inspImg" src="image/carissarogers-bridge-2072419_1920.jpg" alt="Project Inspection View">
+                <div class="inspector-media-overlay">
+                  <span class="live-tag">LIVE CAD SATELLITE FEED</span>
+                </div>
+              </div>
+
+              <div class="inspector-info">
+                <h3 id="inspTitle">Chennai Outer Ring Viaduct & Coastal Expressway</h3>
+                <p id="inspDesc">A critical multi-modal transit corridor engineered to withstand severe cyclonic tidal surge and high-tonnage freight transport along the Coromandel coastline.</p>
+              </div>
+
+              <div class="inspector-spec-grid">
+                <div class="spec-box">
+                  <span class="s-key">Infrastructure Type</span>
+                  <span class="s-val" id="inspType">8-Lane Viaduct & Sea Defense</span>
+                </div>
+                <div class="spec-box">
+                  <span class="s-key">Completion Target</span>
+                  <span class="s-val highlight" id="inspYear">2026</span>
+                </div>
+                <div class="spec-box">
+                  <span class="s-key">Distance / Scale</span>
+                  <span class="s-val" id="inspScale">62.4 KM</span>
+                </div>
+                <div class="spec-box">
+                  <span class="s-key">Load Capacity</span>
+                  <span class="s-val highlight" id="inspLoad">24.8 kN / m²</span>
+                </div>
+                <div class="spec-box" style="grid-column: span 2;">
+                  <span class="s-key">Engineering Discipline</span>
+                  <span class="s-val" id="inspDiscipline">Structural & Marine Civil Engineering</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="inspector-footer">
+              <button id="inspCta" class="btn btn-primary btn-sm" style="width: 100%;">
+                <span>View Full Case Study Spec</span>
+                <i data-lucide="arrow-up-right"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3D STRUCTURAL ENGINEERING LAB (Three.js Visualizer) -->
+    <section id="structural-lab" class="visualizer-section">
+      <div class="container">
+        <div class="section-label">
+          <span class="cad-tag">3D COMPUTATIONAL LAB</span>
+          <div class="line"></div>
+        </div>
+        <h2 class="section-title">Finite Element Stress Simulation</h2>
+        <p class="section-desc">
+          Interactive real-time 3D cantilever bridge & viaduct model. Drag to rotate the superstructure, inspect stress gradients across load points, and toggle between wireframe and FEA shaders.
+        </p>
+
+        <div class="visualizer-card">
+          <div class="visualizer-toolbar">
+            <div class="visualizer-modes">
+              <button class="vis-mode-btn active" data-mode="stress">FEA Stress Heatmap</button>
+              <button class="vis-mode-btn" data-mode="wireframe">CAD Wireframe</button>
+              <button class="vis-mode-btn" data-mode="solid">Solid Shading</button>
+            </div>
+
+            <div class="stress-scale-bar">
+              <span>0 MPa [LOW]</span>
+              <div class="stress-gradient"></div>
+              <span>450 MPa [YIELD]</span>
+            </div>
+          </div>
+
+          <div id="structuralCanvasContainer" class="canvas-container">
+            <!-- Three.js Canvas mounts here -->
+            <div class="canvas-hud-overlay">
+              <div class="hud-row">
+                <span class="steel-text">STRUCTURAL STRAIN:</span>
+                <span id="hudStrain" class="amber-text">380.4 µε</span>
+              </div>
+              <div class="hud-row">
+                <span class="steel-text">MAX DEFLECTION:</span>
+                <span id="hudDeflection" class="cloud-text">12.40 mm</span>
+              </div>
+              <div class="hud-row">
+                <span class="steel-text">SAFETY FACTOR:</span>
+                <span id="hudSafetyFactor" class="green-text" style="color: var(--green-nominal);">2.84 [SAFE]</span>
+              </div>
+            </div>
+
+            <div class="canvas-instruction">
+              <i data-lucide="move-3d" style="width: 14px; height: 14px; stroke: var(--amber);"></i>
+              <span>Click & drag to rotate 3D truss in real-time</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4K AERIAL SURVEILLANCE & INFRASTRUCTURE VIDEO MISSION CONTROL -->
+    <section id="aerial-vault" class="video-vault-section section-padding">
+      <div class="container">
+        <div class="section-label">
+          <span class="cad-tag"><i data-lucide="crosshair" style="width: 14px; height: 14px;"></i> TACTICAL AERIAL COMMAND</span>
+          <div class="line"></div>
+        </div>
+        <h2 class="section-title">Autonomous Drone Surveillance & Field Matrix</h2>
+        <p class="section-desc">
+          High-definition aerial feeds, thermal strain imaging, LiDAR terrain models, and 4K 60FPS surveillance across active mega-scale infrastructure assets.
+        </p>
+
+        <!-- Drone Vision Sensor Mode & Control Toolbar -->
+        <div class="mission-toolbar">
+          <div class="sensor-mode-group">
+            <span class="toolbar-label mono"><i data-lucide="eye" style="width: 13px; height: 13px;"></i> SENSOR MODE:</span>
+            <button class="sensor-btn active" data-filter="normal"><i data-lucide="camera" style="width: 13px; height: 13px;"></i> RGB 4K</button>
+            <button class="sensor-btn" data-filter="thermal"><i data-lucide="flame" style="width: 13px; height: 13px;"></i> THERMAL FLIR</button>
+            <button class="sensor-btn" data-filter="lidar"><i data-lucide="grid" style="width: 13px; height: 13px;"></i> LiDAR MESH</button>
+            <button class="sensor-btn" data-filter="night"><i data-lucide="moon" style="width: 13px; height: 13px;"></i> NIGHT VISION</button>
+          </div>
+
+          <div class="telemetry-hud-chips mono">
+            <span class="hud-chip"><i data-lucide="zap" style="width: 12px; height: 12px; color: var(--amber);"></i> BATT: <strong>94%</strong></span>
+            <span class="hud-chip"><i data-lucide="radio" style="width: 12px; height: 12px; color: var(--green-nominal);"></i> SIG: <strong>5.8 GHz</strong></span>
+            <span class="hud-chip"><i data-lucide="navigation" style="width: 12px; height: 12px; color: var(--cyan-cad);"></i> ALT: <strong id="hudAltVal">+142.6m</strong></span>
+          </div>
+
+          <button class="btn btn-secondary btn-sm snapshot-btn" id="captureSnapshotBtn">
+            <i data-lucide="camera"></i>
+            <span>CAPTURE CAD SNAPSHOT</span>
+          </button>
+        </div>
+
+        <!-- Master Cinema Screen Frame with Tactical Artificial Horizon -->
+        <div class="theatre-master-wrapper">
+          <div class="theatre-screen-frame" id="theatreScreenContainer">
+            <video id="theatreMainVideo" class="theatre-video-player" autoplay muted loop playsinline preload="auto">
+              <source src="videos/13161273_3840_2160_60fps.mp4" type="video/mp4">
+            </video>
+
+            <!-- Video Scanlines & CRT Mesh Filter Overlay -->
+            <div class="screen-scanlines"></div>
+
+            <!-- Artificial Horizon Flight Ladder Overlays -->
+            <div class="flight-hud-horizon">
+              <div class="horizon-pitch-line pitch-plus"><span>+10°</span><div class="ladder-bar"></div><span>+10°</span></div>
+              <div class="horizon-center-crosshair">
+                <div class="center-circle"></div>
+                <div class="wing-left"></div>
+                <div class="wing-right"></div>
+              </div>
+              <div class="horizon-pitch-line pitch-minus"><span>-10°</span><div class="ladder-bar"></div><span>-10°</span></div>
+            </div>
+
+            <!-- Dynamic Mouse Reticle Target -->
+            <div class="dynamic-target-reticle" id="droneTargetReticle">
+              <div class="target-bracket-tl"></div>
+              <div class="target-bracket-tr"></div>
+              <div class="target-bracket-bl"></div>
+              <div class="target-bracket-br"></div>
+              <span class="target-tag mono">TARGET: LOCK 60FPS</span>
+            </div>
+
+            <!-- Video HUD Overlays -->
+            <div class="theatre-hud-overlay">
+              <div class="theatre-hud-top">
+                <div class="hud-live-tag mono">
+                  <span class="status-dot"></span>
+                  <span id="theatreChannelTag">CH 07 • 4K 60FPS TELEMETRY</span>
+                </div>
+                <div class="hud-coords mono" id="theatreCoords">
+                  LAT 28.6139° N / LONG 77.2090° E | ALT: +142.6m MSL
+                </div>
+              </div>
+
+              <!-- Center Play/Pause Trigger Glow -->
+              <button class="theatre-play-toggle" id="theatrePlayToggle" aria-label="Toggle Cinema Playback" title="Play / Pause Video">
+                <i data-lucide="pause" id="theatrePlayIcon"></i>
+              </button>
+
+              <div class="theatre-hud-bottom">
+                <div class="theatre-meta-info">
+                  <span class="theatre-project-id mono" id="theatreProjId">PROJECT ID: NCR-EXP-07</span>
+                  <h3 class="theatre-title" id="theatreTitle">Delhi–NCR 4K High-Speed Transit Corridor</h3>
+                  <p class="theatre-desc" id="theatreDesc">Ultra-high-definition aerial survey tracking 60 FPS viaduct span placement and automated guideway erection.</p>
+                </div>
+                <div class="theatre-controls">
+                  <button class="theatre-ctrl-btn" id="theatreMuteBtn" title="Toggle Sound" aria-label="Toggle Audio">
+                    <i data-lucide="volume-x" id="theatreMuteIcon"></i>
+                  </button>
+                  <button class="theatre-ctrl-btn" id="theatreFullBtn" title="Toggle Fullscreen" aria-label="Toggle Fullscreen">
+                    <i data-lucide="maximize"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+            
+            <div class="theatre-corner tl"></div>
+            <div class="theatre-corner tr"></div>
+            <div class="theatre-corner bl"></div>
+            <div class="theatre-corner br"></div>
+          </div>
+        </div>
+
+        <!-- Matrix Header & Sector Pills -->
+        <div class="matrix-filter-header">
+          <span class="matrix-title mono"><i data-lucide="layout-grid" style="width: 14px; height: 14px;"></i> CCTV SURVEILLANCE MATRIX [6 ACTIVE CHANNELS]</span>
+          <div class="matrix-pills">
+            <button class="matrix-pill active" data-sec="all">ALL FEEDS</button>
+            <button class="matrix-pill" data-sec="viaduct">VIADUCT & METRO</button>
+            <button class="matrix-pill" data-sec="highway">EXPRESSWAY</button>
+            <button class="matrix-pill" data-sec="marine">MARINE & HYDRO</button>
+            <button class="matrix-pill" data-sec="tunnel">TUNNELING</button>
+          </div>
+        </div>
+
+        <!-- CCTV Monitor Rack (Unique Futuristic Cockpit Cards) -->
+        <div class="video-channel-grid">
+          <!-- Channel 1: Mumbai Coastal -->
+          <div class="video-channel-card" data-sec="highway" data-src="videos/215239_medium.mp4" data-id="PROJ-MUM-03" data-title="Mumbai Coastal Multi-Tier Interchange" data-desc="Eight-lane grade-separated interchange linking marine sea links to arterial urban ring roads." data-tag="CH 01 • HIGHWAY" data-coords="LAT 18.9750° N / LONG 72.8258° E | ALT: +32.0m MSL">
+            <div class="channel-topbar mono">
+              <span class="c-badge"><span class="status-dot"></span> CH 01</span>
+              <span class="c-freq">5.8 GHz</span>
+              <div class="c-audio-bars"><span></span><span></span><span></span><span></span></div>
+            </div>
+            <div class="channel-media">
+              <video class="channel-thumb-video" autoplay muted loop playsinline preload="metadata">
+                <source src="videos/215239_medium.mp4" type="video/mp4">
+              </video>
+              <div class="c-scanline"></div>
+              <div class="c-reticle-box"></div>
+              <div class="channel-play-overlay"><i data-lucide="play"></i></div>
+            </div>
+            <div class="channel-body">
+              <div class="channel-header-row">
+                <span class="channel-tag mono">EXPRESSWAY</span>
+                <span class="channel-metric mono">180K PCU</span>
+              </div>
+              <h4 class="channel-title">Mumbai Coastal Interchange</h4>
+              <p class="channel-snippet">Multi-level flyover system engineered for high-density metropolitan transit.</p>
+              <div class="channel-specs-row mono">
+                <span>SECTOR: <strong>HIGHWAY</strong></span>
+                <span>LANES: <strong>8 LANES</strong></span>
+              </div>
+              <span class="channel-cta mono">ENGAGE FEED <i data-lucide="radio"></i></span>
+            </div>
+          </div>
+
+          <!-- Channel 2 -->
+          <div class="video-channel-card" data-sec="highway" data-src="videos/42923-434300950_medium.mp4" data-id="PROJ-HYD-05" data-title="Godavari River Steel Arch Superstructure" data-desc="Weathering steel tied-arch bridge spanning 420m clear waterway with deep caisson foundations." data-tag="CH 02 • ARCH BRIDGE" data-coords="LAT 17.3850° N / LONG 78.4867° E | ALT: +65.4m MSL">
+            <div class="channel-topbar mono">
+              <span class="c-badge"><span class="status-dot"></span> CH 02</span>
+              <span class="c-freq">5.8 GHz</span>
+              <div class="c-audio-bars"><span></span><span></span><span></span><span></span></div>
+            </div>
+            <div class="channel-media">
+              <video class="channel-thumb-video" autoplay muted loop playsinline preload="metadata">
+                <source src="videos/42923-434300950_medium.mp4" type="video/mp4">
+              </video>
+              <div class="c-scanline"></div>
+              <div class="c-reticle-box"></div>
+              <div class="channel-play-overlay"><i data-lucide="play"></i></div>
+            </div>
+            <div class="channel-body">
+              <div class="channel-header-row">
+                <span class="channel-tag mono">ARCH BRIDGE</span>
+                <span class="channel-metric mono">420M SPAN</span>
+              </div>
+              <h4 class="channel-title">Godavari Steel Arch Bridge</h4>
+              <p class="channel-snippet">Orthotropic steel deck engineered for extreme hydraulic scour and wind loads.</p>
+              <div class="channel-specs-row mono">
+                <span>STEEL: <strong>E350 COR-TEN</strong></span>
+                <span>SCOUR: <strong>28M MSL</strong></span>
+              </div>
+              <span class="channel-cta mono">ENGAGE FEED <i data-lucide="radio"></i></span>
+            </div>
+          </div>
+
+          <!-- Channel 3 -->
+          <div class="video-channel-card" data-sec="marine" data-src="videos/215250_medium.mp4" data-id="PROJ-KOC-09" data-title="Kochi Deepwater Container Terminal & Breakwater" data-desc="Heavy marine quay wall, rubblemound breakwater, and automated ship-to-shore crane foundations." data-tag="CH 03 • MARINE" data-coords="LAT 9.9312° N / LONG 76.2673° E | ALT: +12.0m MSL">
+            <div class="channel-topbar mono">
+              <span class="c-badge"><span class="status-dot"></span> CH 03</span>
+              <span class="c-freq">5.8 GHz</span>
+              <div class="c-audio-bars"><span></span><span></span><span></span><span></span></div>
+            </div>
+            <div class="channel-media">
+              <video class="channel-thumb-video" autoplay muted loop playsinline preload="metadata">
+                <source src="videos/215250_medium.mp4" type="video/mp4">
+              </video>
+              <div class="c-scanline"></div>
+              <div class="c-reticle-box"></div>
+              <div class="channel-play-overlay"><i data-lucide="play"></i></div>
+            </div>
+            <div class="channel-body">
+              <div class="channel-header-row">
+                <span class="channel-tag mono">MARINE DEFENSE</span>
+                <span class="channel-metric mono">16.5M DRAFT</span>
+              </div>
+              <h4 class="channel-title">Kochi Deepwater Terminal</h4>
+              <p class="channel-snippet">Anti-sulphate marine concrete structures with cathodic corrosion monitoring.</p>
+              <div class="channel-specs-row mono">
+                <span>QUAY: <strong>1,200M</strong></span>
+                <span>BERTHS: <strong>4 ULCS</strong></span>
+              </div>
+              <span class="channel-cta mono">ENGAGE FEED <i data-lucide="radio"></i></span>
+            </div>
+          </div>
+
+          <!-- Channel 4 -->
+          <div class="video-channel-card" data-sec="tunnel" data-src="videos/137374-766338347_medium.mp4" data-id="PROJ-BLR-02" data-title="Bengaluru Subterranean Twin-Bore Metro Tunnels" data-desc="Earth Pressure Balance TBM boring through mixed hard rock and saturated alluvial layers." data-tag="CH 04 • TUNNELING" data-coords="LAT 12.9716° N / LONG 77.5946° E | ALT: -28.5m MSL">
+            <div class="channel-topbar mono">
+              <span class="c-badge"><span class="status-dot"></span> CH 04</span>
+              <span class="c-freq">5.8 GHz</span>
+              <div class="c-audio-bars"><span></span><span></span><span></span><span></span></div>
+            </div>
+            <div class="channel-media">
+              <video class="channel-thumb-video" autoplay muted loop playsinline preload="metadata">
+                <source src="videos/137374-766338347_medium.mp4" type="video/mp4">
+              </video>
+              <div class="c-scanline"></div>
+              <div class="c-reticle-box"></div>
+              <div class="channel-play-overlay"><i data-lucide="play"></i></div>
+            </div>
+            <div class="channel-body">
+              <div class="channel-header-row">
+                <span class="channel-tag mono">GEOTECHNICAL</span>
+                <span class="channel-metric mono">6.8M DIA</span>
+              </div>
+              <h4 class="channel-title">Bengaluru Metro Twin Tunnels</h4>
+              <p class="channel-snippet">Precision laser-guided EPB shield tunneling beneath dense urban infrastructure.</p>
+              <div class="channel-specs-row mono">
+                <span>DEPTH: <strong>-28.5M</strong></span>
+                <span>TBM: <strong>DUAL EPB</strong></span>
+              </div>
+              <span class="channel-cta mono">ENGAGE FEED <i data-lucide="radio"></i></span>
+            </div>
+          </div>
+
+          <!-- Channel 5 -->
+          <div class="video-channel-card" data-sec="marine" data-src="videos/14117669-uhd_3840_2160_30fps.mp4" data-id="PROJ-KRI-11" data-title="Krishna Basin Mega Reservoir & Hydro Spillway" data-desc="Mass concrete gravity dam featuring radial crest gates, energy dissipators, and intake towers." data-tag="CH 05 • WATERWORKS" data-coords="LAT 16.5120° N / LONG 80.6210° E | ALT: +185.0m MSL">
+            <div class="channel-topbar mono">
+              <span class="c-badge"><span class="status-dot"></span> CH 05</span>
+              <span class="c-freq">5.8 GHz</span>
+              <div class="c-audio-bars"><span></span><span></span><span></span><span></span></div>
+            </div>
+            <div class="channel-media">
+              <video class="channel-thumb-video" autoplay muted loop playsinline preload="metadata">
+                <source src="videos/14117669-uhd_3840_2160_30fps.mp4" type="video/mp4">
+              </video>
+              <div class="c-scanline"></div>
+              <div class="c-reticle-box"></div>
+              <div class="channel-play-overlay"><i data-lucide="play"></i></div>
+            </div>
+            <div class="channel-body">
+              <div class="channel-header-row">
+                <span class="channel-tag mono">HYDRO ENGINEERING</span>
+                <span class="channel-metric mono">1.8M M³ RCC</span>
+              </div>
+              <h4 class="channel-title">Krishna Mega Reservoir Dam</h4>
+              <p class="channel-snippet">Massive roller-compacted concrete dam with fiber-optic strain telemetry.</p>
+              <div class="channel-specs-row mono">
+                <span>HEAD: <strong>112M</strong></span>
+                <span>SPILLWAY: <strong>24 GATES</strong></span>
+              </div>
+              <span class="channel-cta mono">ENGAGE FEED <i data-lucide="radio"></i></span>
+            </div>
+          </div>
+
+          <!-- Channel 6 -->
+          <div class="video-channel-card active" data-sec="viaduct" data-src="videos/13161273_3840_2160_60fps.mp4" data-id="PROJ-NCR-07" data-title="Delhi–NCR 4K High-Speed Transit Corridor" data-desc="160 km/h semi-high-speed rail viaduct integrating ballastless track and IoT health monitoring." data-tag="CH 06 • 4K CORRIDOR" data-coords="LAT 28.6139° N / LONG 77.2090° E | ALT: +142.6m MSL">
+            <div class="channel-topbar mono">
+              <span class="c-badge"><span class="status-dot"></span> CH 06 [4K]</span>
+              <span class="c-freq">60 FPS</span>
+              <div class="c-audio-bars"><span></span><span></span><span></span><span></span></div>
+            </div>
+            <div class="channel-media">
+              <video class="channel-thumb-video" autoplay muted loop playsinline preload="metadata">
+                <source src="videos/13161273_3840_2160_60fps.mp4" type="video/mp4">
+              </video>
+              <div class="c-scanline"></div>
+              <div class="c-reticle-box"></div>
+              <div class="channel-play-overlay"><i data-lucide="play"></i></div>
+            </div>
+            <div class="channel-body">
+              <div class="channel-header-row">
+                <span class="channel-tag mono">4K ULTRA TRANSIT</span>
+                <span class="channel-metric mono">160 KM/H</span>
+              </div>
+              <h4 class="channel-title">Delhi–NCR Rapid Transit</h4>
+              <p class="channel-snippet">Ultra-HD 60 FPS corridor survey with full BIM 6D digital twin alignment.</p>
+              <div class="channel-specs-row mono">
+                <span>SPEED: <strong>160 KM/H</strong></span>
+                <span>TWIN: <strong>BIM 6D</strong></span>
+              </div>
+              <span class="channel-cta mono">ENGAGE FEED <i data-lucide="radio"></i></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+      </div>
+    </section>
+
+    <!-- CORE DISCIPLINES & EXPERTISE -->
+    <section id="expertise" class="expertise-section">
+      <div class="container">
+        <div class="section-label">
+          <span class="cad-tag">CORE DISCIPLINES</span>
+          <div class="line"></div>
+        </div>
+        <h2 class="section-title">Engineered Across Five Verticals</h2>
+        <p class="section-desc">
+          From extreme-span maritime crossings to subterranean mass transit, our teams combine deep mathematical modeling with cutting-edge heavy construction methodology.
+        </p>
+
+        <div class="disciplines-grid">
+          <!-- 1. Structural Systems -->
+          <div class="discipline-card">
+            <div class="disc-media">
+              <img src="image/derks24-kleve-4719157_1920.jpg" alt="Structural Systems">
+              <span class="disc-badge">DISCIPLINE 01</span>
+            </div>
+            <div class="disc-content">
+              <h3>Structural Systems & Bridges</h3>
+              <p>Specialized in long-span cable-stayed, balanced cantilever, and orthotropic steel deck bridges designed for high seismic and aerodynamic resilience.</p>
+              <ul class="disc-features-list">
+                <li><i data-lucide="check"></i> Post-Tensioned Segmental Spans</li>
+                <li><i data-lucide="check"></i> Aerodynamic Wind Tunnel Analysis</li>
+                <li><i data-lucide="check"></i> Base-Isolated Elastomeric Bearings</li>
+              </ul>
+              <button class="btn btn-secondary btn-sm" onclick="openCaseStudyModal('hyderabad')">Inspect Structural Specs</button>
+            </div>
+          </div>
+
+          <!-- 2. High-Speed Highways -->
+          <div class="discipline-card">
+            <div class="disc-media">
+              <img src="image/pexels-tkirkgoz-19408681.jpg" alt="Transportation Infrastructure">
+              <span class="disc-badge">DISCIPLINE 02</span>
+            </div>
+            <div class="disc-content">
+              <h3>Expressways & Transit Viaducts</h3>
+              <p>Heavy-axle freight corridors, multi-tier interchange complexes, and automated rapid transit guideways engineered for high throughput.</p>
+              <ul class="disc-features-list">
+                <li><i data-lucide="check"></i> High-Modulus Polymer Asphalt</li>
+                <li><i data-lucide="check"></i> Automated Grade Separation</li>
+                <li><i data-lucide="check"></i> Intelligent Traffic Monitoring Hubs</li>
+              </ul>
+              <button class="btn btn-secondary btn-sm" onclick="openCaseStudyModal('chennai')">Inspect Highway Specs</button>
+            </div>
+          </div>
+
+          <!-- 3. Geotechnical & Tunnels -->
+          <div class="discipline-card">
+            <div class="disc-media">
+              <img src="image/pexels-alqasim-sadiq-458113001-20817774.jpg" alt="Geotechnical Systems">
+              <span class="disc-badge">DISCIPLINE 03</span>
+            </div>
+            <div class="disc-content">
+              <h3>Geotechnical & Subterranean</h3>
+              <p>Twin-bore TBM tunneling, deep diaphragm cut-and-cover box structures, micro-piling, and ground improvement in challenging alluvial formations.</p>
+              <ul class="disc-features-list">
+                <li><i data-lucide="check"></i> Slurry & Earth Pressure Balance TBM</li>
+                <li><i data-lucide="check"></i> 3D Ground Settlement Modeling</li>
+                <li><i data-lucide="check"></i> Hydrophilic Gasket Sealing</li>
+              </ul>
+              <button class="btn btn-secondary btn-sm" onclick="openCaseStudyModal('bengaluru')">Inspect Tunnel Specs</button>
+            </div>
+          </div>
+
+          <!-- 4. Water & Marine -->
+          <div class="discipline-card">
+            <div class="disc-media">
+              <img src="image/pexels-flooriefloor-13787760.jpg" alt="Marine Infrastructure">
+              <span class="disc-badge">DISCIPLINE 04</span>
+            </div>
+            <div class="disc-content">
+              <h3>Hydrological & Marine Defense</h3>
+              <p>Deep-water container berths, offshore breakwaters, automated barrage gates, and storm surge defenses for coastal resilience.</p>
+              <ul class="disc-features-list">
+                <li><i data-lucide="check"></i> Anti-Sulphate Marine Concrete</li>
+                <li><i data-lucide="check"></i> Cathodic Corrosion Monitoring</li>
+                <li><i data-lucide="check"></i> Computational Hydrodynamic Wave CFD</li>
+              </ul>
+              <button class="btn btn-secondary btn-sm" onclick="openCaseStudyModal('chennai')">Inspect Marine Specs</button>
+            </div>
+          </div>
+
+          <!-- 5. Smart Urban Mobility -->
+          <div class="discipline-card">
+            <div class="disc-media">
+              <img src="image/pexels-tomfisk-4626415.jpg" alt="Urban Mobility">
+              <span class="disc-badge">DISCIPLINE 05</span>
+            </div>
+            <div class="disc-content">
+              <h3>Smart Urban Mobility Hubs</h3>
+              <p>Intermodal transit stations integrating elevated metro lines, high-speed rail, bus terminals, and pedestrian skywalk networks.</p>
+              <ul class="disc-features-list">
+                <li><i data-lucide="check"></i> Multi-Level Transfer Concourse</li>
+                <li><i data-lucide="check"></i> Pedestrian Micro-Simulation</li>
+                <li><i data-lucide="check"></i> Net-Zero Solar Energy Canopies</li>
+              </ul>
+              <button class="btn btn-secondary btn-sm" onclick="openCaseStudyModal('bengaluru')">Inspect Mobility Specs</button>
+            </div>
+          </div>
+
+          <!-- 6. Heavy Civil Equipment & Tech -->
+          <div class="discipline-card">
+            <div class="disc-media">
+              <img src="image/memorycatcher-bulldozer-410115_1920.jpg" alt="Civil Construction Machinery">
+              <span class="disc-badge">DISCIPLINE 06</span>
+            </div>
+            <div class="disc-content">
+              <h3>Robotic Precast & Heavy Erection</h3>
+              <p>Automated segmental precast yards with laser-guided launching gantries capable of lifting 600-tonne concrete box girders with sub-millimeter precision.</p>
+              <ul class="disc-features-list">
+                <li><i data-lucide="check"></i> Automated Match-Cast Segment Pits</li>
+                <li><i data-lucide="check"></i> Laser-Tracked Launching Gantries</li>
+                <li><i data-lucide="check"></i> Steam-Cured High Early Strength Mix</li>
+              </ul>
+              <button class="btn btn-secondary btn-sm" onclick="openCaseStudyModal('mumbai')">Inspect Erection Specs</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BIM 6D & ENGINEERING SERVICES LIFECYCLE -->
+    <section id="services" class="services-section">
+      <div class="container">
+        <div class="section-label">
+          <span class="cad-tag">BIM 6D ENGINEERING LIFECYCLE</span>
+          <div class="line"></div>
+        </div>
+        <h2 class="section-title">End-to-End Infrastructure Delivery</h2>
+        <p class="section-desc">
+          We integrate surveying, computational modeling, robotic fabrication, and structural health monitoring into a unified digital twin platform.
+        </p>
+
+        <div class="process-timeline">
+          <div class="process-step-card">
+            <div class="step-number">01</div>
+            <div class="step-title">LiDAR & GIS Survey</div>
+            <div class="step-desc">Sub-centimeter drone photogrammetry and bathymetric sonar mapping of subterranean geology.</div>
+          </div>
+
+          <div class="process-step-card">
+            <div class="step-number">02</div>
+            <div class="step-title">4D / 5D BIM Model</div>
+            <div class="step-desc">Clash detection, schedule integration, and carbon footprint optimization in parametric Revit/Tekla environments.</div>
+          </div>
+
+          <div class="process-step-card">
+            <div class="step-number">03</div>
+            <div class="step-title">FEA & Wind Tunnel</div>
+            <div class="step-desc">Non-linear seismic time-history analysis and aeroelastic boundary-layer wind tunnel simulation.</div>
+          </div>
+
+          <div class="process-step-card">
+            <div class="step-number">04</div>
+            <div class="step-title">Robotic Fabrication</div>
+            <div class="step-desc">Match-cast precast segments cured in temperature-regulated facilities with RFID tracking.</div>
+          </div>
+
+          <div class="process-step-card">
+            <div class="step-number">05</div>
+            <div class="step-title">Precision Erection</div>
+            <div class="step-desc">Automated launching gantries with hydraulic load-cell feedback for zero-error superstructure closure.</div>
+          </div>
+
+          <div class="process-step-card">
+            <div class="step-number">06</div>
+            <div class="step-title">IoT Health Twin</div>
+            <div class="step-desc">Embedded fiber-optic strain gauges and accelerometers streaming continuous telemetry for 100+ years.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURED PROJECTS & CASE STUDIES (Swiper Carousel) -->
+    <section id="case-studies" class="projects-section">
+      <div class="container">
+        <div class="section-label">
+          <span class="cad-tag">FEATURED CASE STUDIES</span>
+          <div class="line"></div>
+        </div>
+        <h2 class="section-title">Landmark Infrastructure Works</h2>
+        <p class="section-desc">
+          Browse key projects built across diverse geographic and geotechnical challenges.
+        </p>
+
+        <div class="project-carousel-container">
+          <div class="swiper project-swiper">
+            <div class="swiper-wrapper">
+              <!-- Slide 1: Mumbai Sea Link -->
+              <div class="swiper-slide">
+                <div class="project-slide-card">
+                  <div class="proj-img-wrap">
+                    <img src="image/pexels-kewal-nagda-1669654142-27808651.jpg" alt="Mumbai Sea Link">
+                    <span class="proj-location-tag">MUMBAI / 21.8 KM</span>
+                  </div>
+                  <div class="proj-content-wrap">
+                    <span class="proj-category">Marine & Bridges</span>
+                    <h3 class="proj-name">Mumbai Trans-Harbour Deep Ocean Link</h3>
+                    <p class="proj-desc">Indias longest open-sea bridge with orthotropic steel decks and rock-socketed monopiles in tidal mudflats.</p>
+                    <div class="proj-meta-bar">
+                      <span class="mono amber-text">LOAD: 32.5 kN/m²</span>
+                      <button class="btn btn-secondary btn-sm" onclick="openCaseStudyModal('mumbai')">Inspect Case</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Slide 2: Chennai Coastal Viaduct -->
+              <div class="swiper-slide">
+                <div class="project-slide-card">
+                  <div class="proj-img-wrap">
+                    <img src="image/carissarogers-bridge-2072419_1920.jpg" alt="Chennai Viaduct">
+                    <span class="proj-location-tag">CHENNAI / 62.4 KM</span>
+                  </div>
+                  <div class="proj-content-wrap">
+                    <span class="proj-category">Elevated Expressway</span>
+                    <h3 class="proj-name">Chennai Outer Ring Coastal Viaduct</h3>
+                    <p class="proj-desc">8-lane elevated freight artery with cathodic anti-corrosion protection and storm surge revetment barriers.</p>
+                    <div class="proj-meta-bar">
+                      <span class="mono amber-text">LOAD: 24.8 kN/m²</span>
+                      <button class="btn btn-secondary btn-sm" onclick="openCaseStudyModal('chennai')">Inspect Case</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Slide 3: Hyderabad Cyber Viaduct -->
+              <div class="swiper-slide">
+                <div class="project-slide-card">
+                  <div class="proj-img-wrap">
+                    <img src="image/derks24-kleve-4719157_1920.jpg" alt="Hyderabad Bridge">
+                    <span class="proj-location-tag">HYDERABAD / 18.6 KM</span>
+                  </div>
+                  <div class="proj-content-wrap">
+                    <span class="proj-category">Cable-Stayed Arch</span>
+                    <h3 class="proj-name">Hyderabad Cyber Riverfront Flyover</h3>
+                    <p class="proj-desc">Extradosed signature arch bridge with real-time laser vibrometers monitoring 140 high-tensile stay cables.</p>
+                    <div class="proj-meta-bar">
+                      <span class="mono amber-text">LOAD: 22.0 kN/m²</span>
+                      <button class="btn btn-secondary btn-sm" onclick="openCaseStudyModal('hyderabad')">Inspect Case</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Slide 4: Bengaluru Smart Metro -->
+              <div class="swiper-slide">
+                <div class="project-slide-card">
+                  <div class="proj-img-wrap">
+                    <img src="image/pexels-tomfisk-4626415.jpg" alt="Bengaluru Metro">
+                    <span class="proj-location-tag">BENGALURU / 48.2 KM</span>
+                  </div>
+                  <div class="proj-content-wrap">
+                    <span class="proj-category">Mass Transit</span>
+                    <h3 class="proj-name">Bengaluru Smart Metro High-Speed Spine</h3>
+                    <p class="proj-desc">Automated elevated transit corridor built with high-capacity U-girders and post-tensioned straddle bents.</p>
+                    <div class="proj-meta-bar">
+                      <span class="mono amber-text">LOAD: 19.2 kN/m²</span>
+                      <button class="btn btn-secondary btn-sm" onclick="openCaseStudyModal('bengaluru')">Inspect Case</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Pagination & Navigation -->
+            <div class="swiper-pagination"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT SECTION & ENGINEERING PHILOSOPHY -->
+    <section id="about" class="about-section">
+      <div class="container">
+        <div class="about-grid">
+          <div>
+            <div class="section-label">
+              <span class="cad-tag">ENGINEERING PHILOSOPHY</span>
+              <div class="line"></div>
+            </div>
+            <h2 class="section-title">Resilience Measured Across Centuries</h2>
+            <p class="section-desc" style="margin-bottom: 1.5rem;">
+              We believe civil infrastructure is modern civilizations most permanent artistic and functional statement. Every joint, tendon, and pile cap is calculated to outlast political cycles and endure seismic extremes.
+            </p>
+
+            <div class="about-pillars">
+              <div class="pillar-card">
+                <h4>ISO 9001 & AASHTO</h4>
+                <p class="steel-text">Rigorous adherence to international structural codes and non-destructive testing.</p>
+              </div>
+              <div class="pillar-card">
+                <h4>Carbon-Negative Mixes</h4>
+                <p class="steel-text">Blast-furnace slag and fly ash replacing 40% of standard clinker cement.</p>
+              </div>
+              <div class="pillar-card">
+                <h4>0.00 LTI Safety Record</h4>
+                <p class="steel-text">Over 18 million man-hours delivered without a lost-time incident.</p>
+              </div>
+              <div class="pillar-card">
+                <h4>Digital Twin Monitoring</h4>
+                <p class="steel-text">Sensors embedded in concrete matrices feeding real-time strain models.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="about-imagery">
+            <img class="about-main-img" src="image/this_is_engineering-engineer-4941160_1920.jpg" alt="Chief Structural Engineers on Site">
+            <div class="about-floating-card">
+              <span class="mono amber-text" style="font-size: 0.75rem;">CHIEF TECHNICAL DESK</span>
+              <h4 style="font-size: 1.1rem; margin: 0.35rem 0;">4 Decades of Structural Innovation</h4>
+              <p style="font-size: 0.75rem;" class="steel-text">Pioneering balanced cantilever and maritime deep-piling methods across 19 metropolitan hubs.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- INSIGHTS & TECHNICAL WHITEPAPERS -->
+    <section id="insights" class="insights-section">
+      <div class="container">
+        <div class="section-label">
+          <span class="cad-tag">TECHNICAL JOURNAL</span>
+          <div class="line"></div>
+        </div>
+        <h2 class="section-title">Engineering Insights & Research</h2>
+        <p class="section-desc">
+          Peer-reviewed publications and whitepapers authored by our lead structural analysts and geotechnical directors.
+        </p>
+
+        <div class="insights-grid">
+          <div class="insight-card">
+            <div class="insight-meta">
+              <span class="cad-tag" style="font-size: 0.65rem;">WHITEPAPER 042</span>
+              <span>OCT 2026</span>
+            </div>
+            <h3 class="insight-title">Seismic Base Isolation for Long-Span Viaducts</h3>
+            <p class="insight-excerpt">Comparative analysis of lead-rubber bearings versus friction pendulum systems in Zone IV subduction zones.</p>
+            <a href="#tender-portal" class="btn btn-secondary btn-sm">Request Technical PDF</a>
+          </div>
+
+          <div class="insight-card">
+            <div class="insight-meta">
+              <span class="cad-tag" style="font-size: 0.65rem;">RESEARCH REPORT</span>
+              <span>AUG 2026</span>
+            </div>
+            <h3 class="insight-title">Cathodic Protection in Hyper-Saline Marine Concrete</h3>
+            <p class="insight-excerpt">Evaluating zinc-hydrogel sacrificial anodes in extending maritime bridge pier life beyond 120 years.</p>
+            <a href="#tender-portal" class="btn btn-secondary btn-sm">Request Technical PDF</a>
+          </div>
+
+          <div class="insight-card">
+            <div class="insight-meta">
+              <span class="cad-tag" style="font-size: 0.65rem;">CASE ANALYSIS</span>
+              <span>JUL 2026</span>
+            </div>
+            <h3 class="insight-title">Automated Launching Gantries in Dense Urban Corridors</h3>
+            <p class="insight-excerpt">Minimizing street-level traffic disruption during 450-tonne precast segmental erection on curved alignments.</p>
+            <a href="#tender-portal" class="btn btn-secondary btn-sm">Request Technical PDF</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- INTERACTIVE PROJECT TENDER INQUIRY & SCOPE ESTIMATOR -->
+    <section id="tender-portal" class="contact-section">
+      <div class="container">
+        <!-- Centered Section Header -->
+        <div class="section-label">
+          <span class="cad-tag">TENDER & RFP SUBMISSIONS</span>
+          <div class="line"></div>
+        </div>
+        <h2 class="section-title">Initiate a Technical Inquiry</h2>
+        <p class="section-desc">
+          Partner with our civil engineering consortium. Use our parametric Scope Estimator or submit your RFP documentation directly to our central tender desk.
+        </p>
+
+        <!-- Balanced 2-Column Grid (Estimator vs RFP Form) -->
+        <div class="contact-layout-grid">
+          <!-- Col 1: Parametric Estimator Card -->
+          <div class="tender-form-card">
+            <h4 style="font-size: 1.15rem; margin-bottom: 0.6rem; color: var(--amber); text-align: center;">
+              <i data-lucide="calculator" style="width: 18px; height: 18px; vertical-align: middle; margin-right: 0.4rem;"></i>
+              Parametric Project Scope Estimator
+            </h4>
+            <p style="font-size: 0.82rem; color: var(--steel-light); margin-bottom: 1.5rem; text-align: center;">
+              Real-time computational cost, timeframe, and concrete volume projections.
+            </p>
+            
+            <div id="tenderCalcForm">
+              <div class="form-grid-2">
+                <div class="form-group">
+                  <label>Infrastructure Sector</label>
+                  <select id="calcSector" class="form-select">
+                    <option value="bridges">Bridge / Flyover Structure</option>
+                    <option value="highways">Expressway / Road Corridor</option>
+                    <option value="rail">Elevated / Subterranean Metro</option>
+                    <option value="water">Marine Berth & Storm Barrier</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label>Corridor Length (KM)</label>
+                  <input type="number" id="calcScale" class="form-input" value="18" min="1" max="250">
+                </div>
+              </div>
+
+              <div class="form-grid-2">
+                <div class="form-group">
+                  <label>Geotechnical Soil Class</label>
+                  <select id="calcSoil" class="form-select">
+                    <option value="alluvial">Alluvial Clay & Silt</option>
+                    <option value="marine">Marine Soft Clay / Intertidal</option>
+                    <option value="rock">Fissured Hard Rock / Basalt</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label>Seismic Zone Standard</label>
+                  <select id="calcSeismic" class="form-select">
+                    <option value="zone3">Zone III (Moderate)</option>
+                    <option value="zone4">Zone IV (Severe)</option>
+                    <option value="zone5">Zone V (Extreme Fault Line)</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="inspector-spec-grid" style="margin-top: 1.25rem;">
+                <div class="spec-box">
+                  <span class="s-key">Estimated Civil Budget</span>
+                  <span class="s-val highlight" id="estCost">$255.6M USD</span>
+                </div>
+                <div class="spec-box">
+                  <span class="s-key">Target Timeline</span>
+                  <span class="s-val" id="estTimeline">24 Months</span>
+                </div>
+                <div class="spec-box" style="grid-column: span 2;">
+                  <span class="s-key">Estimated High-Performance Concrete Volume</span>
+                  <span class="s-val" id="estConcrete">216,000 m³</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Col 2: Formal RFP Contact Form -->
+          <div class="tender-form-card">
+            <h3 style="font-size: 1.3rem; margin-bottom: 0.4rem; text-align: center;">Submit RFP Specification</h3>
+            <p style="font-size: 0.82rem; color: var(--steel-light); margin-bottom: 1.5rem; text-align: center;">Direct dispatch to our Lead Chief Engineer and Bid Evaluation Committee.</p>
+
+            <form id="projectInquiryForm">
+              <div class="form-grid-2">
+                <div class="form-group">
+                  <label>Agency / Authority Name</label>
+                  <input type="text" class="form-input" placeholder="e.g. National Highways Authority" required>
+                </div>
+                <div class="form-group">
+                  <label>Contact Principal</label>
+                  <input type="text" class="form-input" placeholder="Chief Project Engineer" required>
+                </div>
+              </div>
+
+              <div class="form-grid-2">
+                <div class="form-group">
+                  <label>Official Email</label>
+                  <input type="email" class="form-input" placeholder="tender@agency.gov.in" required>
+                </div>
+                <div class="form-group">
+                  <label>Phone / Telemetry Direct</label>
+                  <input type="tel" class="form-input" placeholder="+91 98000 00000" required>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label>Project Title & Geographic Location</label>
+                <input type="text" class="form-input" placeholder="e.g. 6-Lane Coastal Elevated Viaduct, Phase II" required>
+              </div>
+
+              <div class="form-group">
+                <label>Technical Scope & Requirements</label>
+                <textarea class="form-textarea" placeholder="Provide details on required span dimensions, load standards, geotechnical survey availability, and completion horizon..." required></textarea>
+              </div>
+
+              <div id="formSuccessMessage" style="display: none; padding: 0.85rem; background: rgba(46, 213, 115, 0.15); border: 1px solid var(--green-nominal); color: var(--cloud); font-family: var(--font-mono); font-size: 0.78rem; margin-bottom: 1rem; border-radius: var(--card-radius); text-align: center;">
+                ✓ SPECIFICATION TRANSMITTED. Tender Reference #VTX-2026-981 assigned. Chief Bid Officer will respond within 24 hours.
+              </div>
+
+              <button type="submit" class="btn btn-primary pill-btn" style="width: 100%;">
+                <span>Transmit Technical Tender RFP</span>
+                <i data-lucide="send"></i>
+              </button>
+            </form>
+          </div>
+        </div>
+
+        <!-- Regional Offices Grid Row (Centered beneath the 2 cards) -->
+        <div class="contact-offices-grid" style="margin-top: 2.5rem;">
+          <div class="office-card">
+            <div class="office-city">Chennai HQ</div>
+            <div class="office-coord">13.0827° N, 80.2707° E</div>
+            <div class="office-detail">Vortex Infra Tower, Mount Road Central<br>Tel: +91 44 2855 0920</div>
+          </div>
+
+          <div class="office-card">
+            <div class="office-city">Mumbai Hub</div>
+            <div class="office-coord">19.0760° N, 72.8777° E</div>
+            <div class="office-detail">BKC Maritime Engineering Centre<br>Tel: +91 22 6620 4400</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- CONTINUOUS ENGINEERING DATA RAIL (Signature HUD Detail) -->
+  <aside class="engineering-data-rail">
+    <div class="rail-left">
+      <div class="rail-item">
+        <span class="rail-label">ACTIVE SECTOR:</span>
+        <span class="rail-value active" id="railProject">PROJECT 024 / STRUCTURAL ENGINEERING / 2027</span>
+      </div>
+      <div class="rail-item">
+        <span class="rail-label">COORDINATES:</span>
+        <span class="rail-value" id="railLat">LAT 13.08° N</span>
+        <span class="rail-value" id="railLong">LONG 80.27° E</span>
+      </div>
+    </div>
+
+    <div class="rail-center">
+      <div class="rail-ticker-wrap">
+        <div class="rail-ticker">
+          [CAD 1:5000] • [M70 CONCRETE SPEC: NOMINAL] • [SEISMIC CLASS: ZONE IV] • [DECK STRAIN: 380 µε] • [WIND SHEAR: 18.2 m/s] • [SYSTEM: NOMINAL]
+        </div>
+      </div>
+    </div>
+
+    <div class="rail-right">
+      <div class="rail-item">
+        <span class="rail-label">MAX CAPACITY:</span>
+        <span class="rail-value active" id="railLoad">LOAD CAPACITY / 18.4 kN</span>
+      </div>
+      <div class="rail-item">
+        <span class="rail-value mono" id="railUtcTime">UTC 00:00:00Z</span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- CASE STUDY INSPECTION MODAL -->
+  <div id="caseStudyModal" class="case-modal-backdrop">
+    <div class="case-modal-dialog">
+      <button id="modalCloseBtn" class="modal-close-btn" aria-label="Close Modal">
+        <i data-lucide="x"></i>
+      </button>
+
+      <img id="modalHeroImg" class="modal-hero-img" src="image/carissarogers-bridge-2072419_1920.jpg" alt="Case Study Hero">
+
+      <div class="modal-content-inner">
+        <div class="section-label" style="margin-bottom: 0.5rem;">
+          <span class="cad-tag" id="modalDiscipline">STRUCTURAL ENGINEERING SPECIFICATION</span>
+        </div>
+        <h2 id="modalTitle" style="font-size: 2rem; margin-bottom: 0.4rem;">Chennai Outer Ring Viaduct</h2>
+        <p id="modalSubtitle" style="color: var(--amber); font-family: var(--font-mono); font-size: 0.9rem; margin-bottom: 1.5rem;">62.4 KM Elevated Maritime Corridor</p>
+
+        <!-- Technical Specification Grid -->
+        <div class="inspector-spec-grid" style="margin-bottom: 2rem;">
+          <div class="spec-box">
+            <span class="s-key">Design Load Capacity</span>
+            <span class="s-val highlight" id="modalLoad">24.8 kN / m²</span>
+          </div>
+          <div class="spec-box">
+            <span class="s-key">Continuous Span Length</span>
+            <span class="s-val" id="modalSpan">1,420 m</span>
+          </div>
+          <div class="spec-box">
+            <span class="s-key">Concrete Volume</span>
+            <span class="s-val" id="modalConcrete">410,000 m³</span>
+          </div>
+          <div class="spec-box">
+            <span class="s-key">Seismic Standard</span>
+            <span class="s-val" id="modalSeismic">Zone III Damping</span>
+          </div>
+          <div class="spec-box">
+            <span class="s-key">Design Life</span>
+            <span class="s-val highlight" id="modalLife">120 Years</span>
+          </div>
+          <div class="spec-box">
+            <span class="s-key">Client Authority</span>
+            <span class="s-val" id="modalClient">NHAI Coastal Dept</span>
+          </div>
+        </div>
+
+        <!-- Before / After Construction Inspection Slider -->
+        <div style="margin-bottom: 2rem;">
+          <div class="section-label" style="margin-bottom: 0.75rem;">
+            <span class="mono" style="font-size: 0.75rem; color: var(--steel-light); text-transform: uppercase;">Construction Progression: Ground Earthworks vs. Completed Structure</span>
+          </div>
+          <div class="before-after-wrapper">
+            <div class="img-layer">
+              <img id="modalAfterImg" src="image/carissarogers-bridge-2072419_1920.jpg" alt="Completed Structure">
+            </div>
+            <div class="layer-after">
+              <img id="modalBeforeImg" src="image/memorycatcher-bulldozer-410118_1920.jpg" alt="Foundation Excavation">
+            </div>
+            <div class="slider-handle">
+              <i data-lucide="chevrons-left-right" style="width: 20px; height: 20px;"></i>
+            </div>
+            <span class="layer-badge badge-after">COMPLETED INFRASTRUCTURE</span>
+            <span class="layer-badge badge-before">SUBSTRUCTURE EXCAVATION</span>
+          </div>
+        </div>
+
+        <!-- Narrative -->
+        <div style="margin-bottom: 2rem;">
+          <h4 style="font-size: 1.1rem; margin-bottom: 0.6rem; color: var(--cloud-pure);">Engineering Narrative</h4>
+          <p id="modalNarrative" style="line-height: 1.7; font-size: 0.95rem; color: var(--steel-light);">
+            Designed to alleviate chronic port congestion and withstand severe Bay of Bengal cyclonic storm surges, the viaduct features 120-meter precast segmental spans erected using twin 450-tonne automated launching gantries.
+          </p>
+        </div>
+
+        <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+          <a href="#tender-portal" class="btn btn-primary btn-sm" onclick="closeCaseStudyModal()">Inquire for Similar Project Scope</a>
+          <button class="btn btn-secondary btn-sm" onclick="closeCaseStudyModal()">Close Blueprint Spec</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SITE FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-col">
+          <div class="brand-logo" style="margin-bottom: 1.25rem;">
+            <div class="logo-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 22h16M2 22l10-18 10 18M10 14h4M8 18h8"/>
+              </svg>
+            </div>
+            <div class="brand-text">
+              <span class="brand-name">VORTEX INFRA</span>
+              <span class="brand-sub">CIVIL & STRUCTURAL ENGINEERING</span>
+            </div>
+          </div>
+          <p style="font-size: 0.85rem; line-height: 1.6; color: var(--steel-light);">
+            Engineering the scale of tomorrow. Delivering resilient bridges, highways, sub-surface transit bores, and coastal marine defense across the globe.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h5>Disciplines</h5>
+          <ul class="footer-links">
+            <li><a href="#expertise">Structural & Bridge Systems</a></li>
+            <li><a href="#expertise">Expressways & Transit Viaducts</a></li>
+            <li><a href="#expertise">Geotechnical & TBM Tunnels</a></li>
+            <li><a href="#expertise">Marine & Coastal Defenses</a></li>
+            <li><a href="#expertise">Smart Urban Mobility Hubs</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h5>Technical Hubs</h5>
+          <ul class="footer-links">
+            <li><a href="#network-map">Chennai Headquarters</a></li>
+            <li><a href="#network-map">Mumbai Maritime Desk</a></li>
+            <li><a href="#network-map">Bengaluru Transit Lab</a></li>
+            <li><a href="#network-map">Delhi-NCR Northern Division</a></li>
+            <li><a href="#network-map">Hyderabad Cyber Corridor</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h5>Accreditations</h5>
+          <ul class="footer-links">
+            <li><span class="mono">ISO 9001:2015 [Quality]</span></li>
+            <li><span class="mono">ISO 14001:2015 [Env]</span></li>
+            <li><span class="mono">ISO 45001:2018 [Safety]</span></li>
+            <li><span class="mono">IRC / AASHTO Certified</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>© 2026 VORTEX INFRASTRUCTURE ENGINEERING CORP. ALL RIGHTS RESERVED.</div>
+        <div class="mono">ORIGIN: CHENNAI [13.0827° N, 80.2707° E] • DATUM: WGS 84</div>
+        <div class="mono amber-text">ALL STRUCTURAL SPECIFICATIONS VERIFIED</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Modular Scripts -->
+  <script src="js/telemetry-rail.js"></script>
+  <script src="js/infrastructure-map.js"></script>
+  <script src="js/structural-3d.js"></script>
+  <script src="js/case-studies.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,223 @@
+/* CAD Blueprint & HUD Elements */
+
+.blueprint-grid-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: 
+    radial-gradient(circle at 1px 1px, rgba(100, 113, 123, 0.15) 1px, transparent 0),
+    linear-gradient(to right, rgba(100, 113, 123, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(100, 113, 123, 0.05) 1px, transparent 1px);
+  background-size: 20px 20px, 100px 100px, 100px 100px;
+}
+
+/* CAD Crosshairs & Dimension Lines */
+.cad-crosshair {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  pointer-events: none;
+}
+.cad-crosshair::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: var(--amber);
+  opacity: 0.7;
+}
+.cad-crosshair::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 0;
+  height: 100%;
+  width: 1px;
+  background: var(--amber);
+  opacity: 0.7;
+}
+
+/* Technical Dimension Ruler */
+.dimension-ruler-h {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 16px;
+  border-bottom: 1px dashed var(--steel-dark);
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  color: var(--steel);
+  padding: 0 4px;
+}
+.dimension-ruler-h .tick {
+  width: 1px;
+  height: 6px;
+  background: var(--steel-dark);
+}
+
+/* Before / After Comparison Component (Responsive) */
+.before-after-wrapper {
+  position: relative;
+  width: 100%;
+  height: clamp(220px, 36vw, 360px);
+  overflow: hidden;
+  border: 1px solid var(--midnight-border);
+  border-radius: var(--card-radius);
+  user-select: none;
+}
+.before-after-wrapper .img-layer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+.before-after-wrapper .img-layer img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.before-after-wrapper .layer-after {
+  position: absolute;
+  inset: 0;
+  width: 50%;
+  overflow: hidden;
+  border-right: 2px solid var(--amber);
+  z-index: 2;
+}
+.before-after-wrapper .layer-after img {
+  width: 100%;
+  max-width: none;
+  height: 100%;
+  object-fit: cover;
+}
+
+.slider-handle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--midnight);
+  border: 2px solid var(--amber);
+  color: var(--amber);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  cursor: ew-resize;
+  box-shadow: 0 0 15px var(--amber-glow);
+}
+
+.layer-badge {
+  position: absolute;
+  bottom: 0.75rem;
+  font-family: var(--font-mono);
+  font-size: clamp(0.58rem, 0.8vw, 0.65rem);
+  letter-spacing: 0.08em;
+  padding: 0.2rem 0.5rem;
+  background: rgba(11, 15, 20, 0.88);
+  border: 1px solid var(--midnight-border);
+  color: var(--cloud);
+  z-index: 5;
+  white-space: nowrap;
+}
+.layer-badge.badge-before { right: 0.75rem; }
+.layer-badge.badge-after { left: 0.75rem; color: var(--amber); border-color: rgba(215, 166, 61, 0.4); }
+
+/* SVG Map Connector Glow Animation */
+.svg-truss-line {
+  stroke: var(--steel-dark);
+  stroke-width: 1.5;
+  stroke-dasharray: 4 4;
+  transition: all 0.3s ease;
+}
+.svg-truss-line.active {
+  stroke: var(--amber);
+  stroke-width: 2.5;
+  stroke-dasharray: none;
+  filter: drop-shadow(0 0 6px var(--amber));
+}
+
+.svg-active-pulse {
+  animation: svg-dash-flow 30s linear infinite;
+}
+@keyframes svg-dash-flow {
+  to {
+    stroke-dashoffset: -1000;
+  }
+}
+
+/* Stress Heatmap Scale Bar */
+.stress-scale-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--steel-light);
+}
+.stress-gradient {
+  width: 120px;
+  height: 8px;
+  border-radius: 1px;
+  background: linear-gradient(90deg, #00d2ff 0%, #2ed573 40%, #d7a63d 75%, #ff4757 100%);
+  border: 1px solid var(--midnight-border);
+}
+
+/* CAD Technical Blueprint Tab System */
+.blueprint-tab-container {
+  display: flex;
+  gap: 0.5rem;
+  border-bottom: 1px solid var(--midnight-border);
+  margin-bottom: 1.5rem;
+}
+.blueprint-tab {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--steel-light);
+  padding: 0.6rem 1.2rem;
+  border: 1px solid transparent;
+  border-bottom: none;
+  background: transparent;
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+.blueprint-tab:hover {
+  color: var(--cloud);
+}
+.blueprint-tab.active {
+  color: var(--amber);
+  background: var(--midnight-card);
+  border-color: var(--midnight-border);
+  border-top: 2px solid var(--amber);
+}
+
+/* Floating coordinate cursor tracker */
+.cursor-reticle {
+  position: fixed;
+  width: 32px;
+  height: 32px;
+  border: 1px solid rgba(215, 166, 61, 0.4);
+  border-radius: 50%;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  transition: width 0.2s, height 0.2s, border-color 0.2s;
+  display: none;
+}
+@media (min-width: 1024px) {
+  .cursor-reticle {
+    display: block;
+  }
+}
+.cursor-reticle.active {
+  width: 48px;
+  height: 48px;
+  border-color: var(--amber);
+  background: rgba(215, 166, 61, 0.05);
+}
