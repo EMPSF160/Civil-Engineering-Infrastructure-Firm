@@ -226,12 +226,62 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 8. Video Player & HUD Camera Feed Controller
+  // 8. Video Player & HUD Camera Feed Controller with Universal Git LFS / GitHub CDN Fallback
+  const GITHUB_MEDIA_BASE = 'https://media.githubusercontent.com/media/EMPSF160/Civil-Engineering-Infrastructure-Firm/main/';
+
+  function resolveVideoSrc(src) {
+    if (!src) return '';
+    if (src.startsWith('http://') || src.startsWith('https://')) return src;
+    
+    // Automatically use GitHub Media CDN when hosted on GitHub Pages
+    const isHostedOnGitHub = window.location.hostname.includes('github.io') || window.location.hostname.includes('github.com');
+    if (isHostedOnGitHub) {
+      const cleanPath = src.replace(/^\.\//, '').replace(/^\//, '');
+      return GITHUB_MEDIA_BASE + cleanPath;
+    }
+    return src;
+  }
+
+  function setupVideoAutoFallback(video) {
+    if (!video) return;
+    video.addEventListener('error', () => {
+      const currentSrc = video.currentSrc || video.src || '';
+      if (currentSrc && !currentSrc.includes('media.githubusercontent.com') && currentSrc.includes('videos/')) {
+        const filename = currentSrc.substring(currentSrc.lastIndexOf('videos/'));
+        const fallbackUrl = GITHUB_MEDIA_BASE + filename;
+        if (video.src !== fallbackUrl) {
+          console.warn(`[Video Fallback] Swapping to GitHub Media stream: ${fallbackUrl}`);
+          video.src = fallbackUrl;
+          video.muted = true;
+          video.load();
+          video.play().catch(() => {});
+        }
+      }
+    }, true);
+  }
+
+  // Pre-bind error fallback to all videos on the page
+  document.querySelectorAll('video').forEach(setupVideoAutoFallback);
+
+  // If on GitHub Pages, adjust thumbnail video sources to direct media stream
+  if (window.location.hostname.includes('github.io') || window.location.hostname.includes('github.com')) {
+    document.querySelectorAll('.channel-thumb-video source, #heroVideoPlayer source, #theatreMainVideo source').forEach(source => {
+      const current = source.getAttribute('src');
+      if (current && !current.startsWith('http')) {
+        source.setAttribute('src', resolveVideoSrc(current));
+      }
+    });
+    document.querySelectorAll('video').forEach(v => {
+      try { v.load(); v.play().catch(() => {}); } catch(e) {}
+    });
+  }
+
   const videoElem = document.getElementById('heroVideoPlayer');
   const camButtons = document.querySelectorAll('.cam-btn[data-src]');
   const playPauseBtn = document.getElementById('heroPlayPauseBtn');
 
   if (videoElem) {
+    setupVideoAutoFallback(videoElem);
     videoElem.muted = true;
     const playPromise = videoElem.play();
     if (playPromise !== undefined) {
@@ -253,11 +303,11 @@ document.addEventListener('DOMContentLoaded', () => {
       btn.addEventListener('click', () => {
         camButtons.forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
-        const src = btn.getAttribute('data-src');
-        if (src) {
-          videoElem.src = src;
+        const rawSrc = btn.getAttribute('data-src');
+        if (rawSrc) {
+          videoElem.src = resolveVideoSrc(rawSrc);
           videoElem.muted = true;
-          videoElem.play();
+          videoElem.play().catch(() => {});
         }
       });
     });
@@ -371,6 +421,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   if (theatreVideo && channelCards.length > 0) {
+    setupVideoAutoFallback(theatreVideo);
     theatreVideo.muted = true;
 
     // Channel Switching Handler
@@ -379,15 +430,15 @@ document.addEventListener('DOMContentLoaded', () => {
         channelCards.forEach(c => c.classList.remove('active'));
         card.classList.add('active');
 
-        const src = card.getAttribute('data-src');
+        const rawSrc = card.getAttribute('data-src');
         const id = card.getAttribute('data-id');
         const title = card.getAttribute('data-title');
         const desc = card.getAttribute('data-desc');
         const tag = card.getAttribute('data-tag');
         const coords = card.getAttribute('data-coords');
 
-        if (src && theatreVideo) {
-          theatreVideo.src = src;
+        if (rawSrc && theatreVideo) {
+          theatreVideo.src = resolveVideoSrc(rawSrc);
           theatreVideo.muted = true;
           theatreVideo.play().catch(() => {});
         }
