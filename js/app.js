@@ -23,6 +23,9 @@ document.addEventListener('DOMContentLoaded', () => {
         mobileToggle.classList.toggle('active');
         const isOpenNow = navDrawer.classList.contains('open');
         mobileToggle.setAttribute('aria-expanded', isOpenNow ? 'true' : 'false');
+        if (isOpenNow) {
+          updateActiveNavLink();
+        }
       }
       
       const isOpen = navDrawer.classList.contains('open');
@@ -70,7 +73,69 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 3. Header Scroll Glassmorphism
+  // 3. Dynamic Navigation Active State Tracking (ScrollSpy & Section Sync)
+  const navMenu = document.getElementById('navMenu');
+  const navLinks = navMenu ? Array.from(navMenu.querySelectorAll('.nav-link')) : [];
+  
+  // Map nav links to target DOM sections
+  const trackedNavSections = [];
+  navLinks.forEach(link => {
+    const href = link.getAttribute('href');
+    if (href && href.startsWith('#')) {
+      const sectionEl = document.querySelector(href);
+      if (sectionEl) {
+        trackedNavSections.push({ link, section: sectionEl, id: href });
+      }
+    }
+  });
+
+  function updateActiveNavLink() {
+    if (!trackedNavSections.length) return;
+
+    const scrollY = window.scrollY;
+    const windowHeight = window.innerHeight;
+    const documentHeight = document.documentElement.scrollHeight;
+
+    // If reached bottom of the webpage, highlight the last section (e.g., Tender & RFP Portal)
+    if (scrollY + windowHeight >= documentHeight - 80) {
+      navLinks.forEach(l => l.classList.remove('active'));
+      trackedNavSections[trackedNavSections.length - 1].link.classList.add('active');
+      return;
+    }
+
+    let currentSection = trackedNavSections[0];
+    const triggerOffset = 220; // Accounts for sticky header + focal line
+
+    for (let i = 0; i < trackedNavSections.length; i++) {
+      const item = trackedNavSections[i];
+      const sectionTop = item.section.offsetTop - triggerOffset;
+      if (scrollY >= sectionTop) {
+        currentSection = item;
+      }
+    }
+
+    navLinks.forEach(l => l.classList.remove('active'));
+    if (currentSection) {
+      currentSection.link.classList.add('active');
+    }
+  }
+
+  window.addEventListener('scroll', updateActiveNavLink, { passive: true });
+  window.addEventListener('resize', updateActiveNavLink, { passive: true });
+  window.addEventListener('hashchange', updateActiveNavLink);
+
+  // Instant active link state on user click
+  navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      navLinks.forEach(l => l.classList.remove('active'));
+      link.classList.add('active');
+    });
+  });
+
+  // Initial active state update on page load
+  updateActiveNavLink();
+
+  // 4. Header Scroll Glassmorphism
   const header = document.querySelector('.site-header');
   window.addEventListener('scroll', () => {
     if (window.scrollY > 50) {
