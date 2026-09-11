@@ -2989,7 +2989,7 @@ button {
   grid-template-columns: 1.4fr 1fr 1fr 1fr;
   gap: clamp(1.5rem, 3vw, 2.5rem);
   margin-bottom: 3rem;
-  text-align: center;
+  text-align: left;
 }
 @media (max-width: 1024px) {
   .footer-top {
@@ -3005,7 +3005,8 @@ button {
 .footer-col {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
+  text-align: left;
 }
 
 .footer-col h5 {
@@ -3015,30 +3016,35 @@ button {
   letter-spacing: 0.1em;
   color: var(--cloud);
   margin-bottom: 1.1rem;
-  text-align: center;
+  text-align: left;
 }
 .footer-links {
   list-style: none;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   gap: 0.55rem;
+  padding: 0;
+  margin: 0;
 }
 .footer-links a {
   transition: all var(--transition-fast);
-  text-align: center;
+  text-align: left;
+  text-decoration: none;
+  color: var(--steel-light);
 }
 .footer-links a:hover {
   color: var(--amber);
+  transform: translateX(3px);
 }
 
 /* Footer Social Icon Links */
 .footer-socials {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 0.65rem;
-  margin-top: 1.25rem;
+  margin-top: 1.35rem;
   flex-wrap: wrap;
 }
 
@@ -3046,35 +3052,35 @@ button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 36px;
-  height: 36px;
+  width: 38px;
+  height: 38px;
   border-radius: 4px;
-  background: rgba(21, 30, 39, 0.7);
+  background: rgba(21, 30, 39, 0.85);
   border: 1px solid var(--midnight-border);
   color: var(--steel-light);
   transition: all var(--transition-fast);
   text-decoration: none;
 }
 
-.social-icon-btn svg,
-.social-icon-btn i {
-  width: 17px;
-  height: 17px;
+.social-icon-btn svg {
+  width: 18px;
+  height: 18px;
   stroke: currentColor;
   transition: all var(--transition-fast);
+  display: block;
 }
 
 .social-icon-btn:hover {
   color: var(--amber);
-  background: rgba(215, 166, 61, 0.12);
+  background: rgba(215, 166, 61, 0.15);
   border-color: var(--amber);
   transform: translateY(-2px);
-  box-shadow: 0 0 14px rgba(215, 166, 61, 0.25);
+  box-shadow: 0 0 14px rgba(215, 166, 61, 0.3);
 }
 
-.social-icon-btn:hover svg,
-.social-icon-btn:hover i {
+.social-icon-btn:hover svg {
   stroke: var(--amber);
+  fill: currentColor;
   transform: scale(1.1);
 }
 
